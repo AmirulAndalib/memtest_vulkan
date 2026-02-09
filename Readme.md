@@ -211,8 +211,11 @@ Note that this library itself doesn't depend on any GPU, it is loadable even wit
 * `memtest_vulkan: early exit during init: ERROR_INCOMPATIBLE_DRIVER`<br>
 `memtest_vulkan: early exit during init: ERROR_INITIALIZATION_FAILED`<br>
 Those messages mean that your system lacks the vulkan driver for your GPU or your system doesn't have any vulkan-capable devices. If the device is known to be vulkan-capable try removing all GPU drivers and reinstalling/updating a driver for the device you want to test.
-* `Runtime error: This device lacks support for DEVICE_LOCAL+HOST_COHERENT memory type.` <br>
-Testing of some older pre-2016 GPUs is not supported due to driver limitations. For example, GTX780Ti on Windows even with latest 472.xx driver reports the message above. The same applies to newer NVIDIA GPUs on old windows 7 with 47x.xx driver - newer OS needed for testing.
+* `Runtime error: This device lacks support for DEVICE_LOCAL+HOST_COHERENT memory type.`<br>
+Typical causes are software or hardware not supported by memtets_vulkan:
+  * Emulator/translator usage: if the tested GPU name in the output mentions something like `Microsoft Direct3D12 (model name)` — the translator similar to Mesa Dozen “Vulkan-over-Direct3D12” is used. If several devices are listed on the memtest_vulkan startup, try selecting another driver variant.
+  * Pre-2016 GPU: Some older GPUs are not supported due to driver limitations, like GTX780Ti on Windows even with the latest 472.xx driver
+  * Old OS/driver: Windows 7 with 47x.xx driver has driver limitations even with post-2016 GPUs that are supported in newer environments.
 * `Runtime error: Failed determining memory budget` on the integrated GPU <br>
 If the integrated GPU is configured with fixed & quite low dedicated memory size - it may be shown in memtest_vulkan output only with 1GB VRAM: `1GB AMD Radeon(TM) Vega 3 Graphics` and then fail. The vulkan implementation for integrated GPUs allows using a bit less memory than reserved, and memtest_vulkan requires at least 1GB available memory to operate. Reconfigure integrated GPU to reserve at least 1.5GB of memory, see [issue #22](https://github.com/GpuZelenograd/memtest_vulkan/issues/22)
 * `INIT OR FIRST testing failed due to runtime error` <br>
