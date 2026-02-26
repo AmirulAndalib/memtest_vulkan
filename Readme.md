@@ -8,7 +8,8 @@ Requires system-provided vulkan loader and driver supporting Vulkan 1.1 (already
 
 ## Installation & Usage (Windows)
 
-[⬇Get 64-bit .exe from latest release](https://github.com//GpuZelenograd/memtest_vulkan/releases#user-content-Downloads). GitHub users also may want to try [CI build artifacts](https://github.com/GpuZelenograd/memtest_vulkan/actions) (only last 3 months kept).
+### [**<kbd>📥</kbd>** Get .exe from latest release](https://github.com//GpuZelenograd/memtest_vulkan/releases#user-content-Downloads)
+GitHub users also may want to try [CI build artifacts](https://github.com/GpuZelenograd/memtest_vulkan/actions) (only last 3 months kept).
 
 Start test by double-clicking the utility, no installation / parameters / configuration / admin-rights required.
 ![WindowsScreenshot](.github/memtest_vulkan_windows_rtx2070.png)
